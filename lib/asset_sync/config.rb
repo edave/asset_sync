@@ -9,7 +9,7 @@ module AssetSync
     attr_accessor :gzip_compression
     attr_accessor :manifest
     attr_accessor :fail_silently
-    attr_accessor :fog_asset_prefix
+    attr_accessor :fog_assets_prefix
 
     # FOG configuration
     attr_accessor :fog_provider          # Currently Supported ['AWS', 'Rackspace']
