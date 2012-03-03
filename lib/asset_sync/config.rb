@@ -9,6 +9,7 @@ module AssetSync
     attr_accessor :gzip_compression
     attr_accessor :manifest
     attr_accessor :fail_silently
+    attr_accessor :fog_asset_prefix
 
     # FOG configuration
     attr_accessor :fog_provider          # Currently Supported ['AWS', 'Rackspace']
@@ -37,6 +38,7 @@ module AssetSync
       self.gzip_compression = false
       self.manifest = false
       self.fail_silently = false
+      self.fog_assets_prefix = assets_prefix
       load_yml! if yml_exists?
     end
 
@@ -96,6 +98,7 @@ module AssetSync
       self.gzip_compression       = yml["gzip_compression"] if yml.has_key?("gzip_compression")
       self.manifest               = yml["manifest"] if yml.has_key?("manifest")
       self.fail_silently          = yml["fail_silently"] if yml.has_key?("fail_silently")
+      self.fog_assets_prefix      = yml["fog_assets_prefix"] if yml.has_key?("fog_assets_prefix")
 
       # TODO deprecate the other old style config settings. FML.
       self.aws_access_key_id      = yml["aws_access_key"] if yml.has_key?("aws_access_key")
