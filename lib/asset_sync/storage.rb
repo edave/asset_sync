@@ -83,7 +83,7 @@ module AssetSync
         :expires => CGI.rfc1123_date(Time.now + 1.year)
       }
       if config.fog_assets_prefix != config.assets_prefix
-        file.merge!(:directory => config.fog_assets_prefix)
+        file[:key] = "#{config.fog_assets_prefix}/#{file[:key]}"
       end
 
       gzipped = "#{path}/#{f}.gz"
