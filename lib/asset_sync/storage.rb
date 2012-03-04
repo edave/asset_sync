@@ -82,6 +82,9 @@ module AssetSync
         :cache_control => "public, max-age=31557600",
         :expires => CGI.rfc1123_date(Time.now + 1.year)
       }
+      if config.fog_assets_prefix != config.assets_prefix
+        file.merge!(:directory => config.fog_assets_prefix)
+      end
 
       gzipped = "#{path}/#{f}.gz"
       ignore = false

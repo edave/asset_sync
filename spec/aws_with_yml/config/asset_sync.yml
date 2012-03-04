@@ -3,6 +3,7 @@ defaults: &defaults
   aws_access_key_id: "xxxx"
   aws_secret_access_key: "zzzz"
   region: "eu-west-1"
+  fog_assets_prefix: 'custom_asset_prefix'
 
 development:
   <<: *defaults

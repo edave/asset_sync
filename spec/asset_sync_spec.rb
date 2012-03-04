@@ -13,6 +13,7 @@ describe AssetSync do
         config.fog_directory = 'mybucket'
         config.fog_region = 'eu-west-1'
         config.existing_remote_files = "keep"
+        config.fog_assets_prefix = "custom_asset_prefix"
       end
     end
 
@@ -52,6 +53,10 @@ describe AssetSync do
     it "should default manifest to false" do
       AssetSync.config.manifest.should be_false
     end
+
+    it "should configure fog assets prefix" do
+      AssetSync.config.fog_assets_prefix.should == 'custom_asset_prefix'
+    end
   end
 
   describe 'from yml' do
@@ -87,6 +92,11 @@ describe AssetSync do
     it "should default manifest to false" do
       AssetSync.config.manifest.should be_false
     end
+
+    it "should configure fog assets prefix" do
+       AssetSync.config.fog_assets_prefix.should == 'custom_asset_prefix'
+    end
+
   end
 
   describe 'with no configuration' do
